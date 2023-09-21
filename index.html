@@ -10,28 +10,26 @@
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light">
-		<div class="container">
+	<nav class="navbar navbar-expand-sm navbar-light bg-light" id="navbar">
+		<div class="container" id="nav-container">
 			<a href="index.html" class="navbar-brand">Ryota's website</a>
-
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1"
-				aria-controls="navmenu1" aria-expanded="false" aria-label="Toggle navigation">
+				aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
-
 			<div class="collapse navbar-collapse" id="navmenu1">
 				<div class="navbar-nav">
-					<a class="nav-item nav-link" href="index.html">Home</a>
-					<a class="nav-item nav-link" href="publication.html">Publication</a>
-					<a class="nav-item nav-link" href="make.html">Make</a>
-					<a class="nav-item nav-link" href="photo.html">Photo</a>
-					<a class="nav-item nav-link" href="misc.html">Misc</a>
+					<a href="index.html" class="nav-item nav-link">Home</a>
+					<a href="publication.html" class="nav-item nav-link">Publication</a>
+					<a href="make.html" class="nav-item nav-link">Make</a>
+					<a href="photo.html" class="nav-item nav-link">Photo</a>
+					<a href="misc.html" class="nav-item nav-link">Misc</a>
 				</div>
 			</div>
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" id="main-container" style="margin-top: 0px;">
 		<div class="row">
 			<div class="col-sm-9">
 				<h1 id="name">
@@ -146,6 +144,18 @@
 		maeda.ryota.elerac [at] gmail.com
 
 	</div>
+
+	<script>
+		// If the window is resized to mobile size, change the navbar to fixed-top and set the margin-top of the main-container
+		if (window.innerWidth < 576) {
+			// Change the navbar to fixed-top
+			document.getElementById('navbar').classList.add('fixed-top');
+			// Get the height of the navbar
+			const navbarHeight = document.getElementById('navbar').offsetHeight;
+			// Set the margin-top of the main-container
+			document.getElementById('main-container').style.marginTop = navbarHeight + 'px';
+		}
+	</script>
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
