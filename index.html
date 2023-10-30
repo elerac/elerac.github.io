@@ -64,34 +64,6 @@
 			</div>
 		</div>
 
-		<!-- Show list of navbar items with links for mobile -->
-		<script>
-			if (/Mobi/.test(navigator.userAgent)) {
-				// mobile device detected
-				// Show list of navbar items with links
-				var navbar = document.getElementById("navmenu1");
-				var navbar_items = navbar.getElementsByClassName("nav-item");
-				var navbar_items_link = navbar.getElementsByClassName("nav-link");
-				var navbar_items_html = "";
-				navbar_items_html += "<ul>";
-				for (var i = 0; i < navbar_items.length; i++) {
-					// Except Home
-					if (i == 0) {
-						continue;
-					}
-					navbar_items_html += "<li>";
-					navbar_items_html += "<a href=\"" + navbar_items_link[i].href + "\">";
-					navbar_items_html += navbar_items[i].innerHTML;
-					navbar_items_html += "</a>";
-					navbar_items_html += "</li>";
-				}
-				navbar_items_html += "</ul>";
-				document.getElementById("mobile-text").innerHTML = navbar_items_html;
-			} else {
-				// non-mobile device detected
-			}
-		</script>
-
 		<h2 id="projects">Projects</h2>
 		<div class="card mt-3">
 			<div class="card">
