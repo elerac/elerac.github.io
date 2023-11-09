@@ -2,15 +2,64 @@ name: Build CV and upload PDF
 
 on:
   workflow_dispatch:
-  workflow_call:
   push:
     paths:
       - CV/*.tex
-      - CV/github_stars/*.tex
 
 jobs:
-  build:
+  fetch_stars:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: ["polanalyser", "structuredlight", "EasyPySpin"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check GitHub Stars and store them into files (named as CV/github_stars/$REPO.tex)
+        run: |
+          mkdir -p CV/github_stars
+          curl -s https://api.github.com/repos/elerac/${{matrix.repo}} | jq .stargazers_count > CV/github_stars/${{ matrix.repo }}.tex
+      - name: Show the number of stars
+        run: |
+          cat CV/github_stars/${{matrix.repo}}.tex
+      - name: Upload files
+        uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: CV/github_stars/${{ matrix.repo }}.tex
+
+  check_stars:
+    needs: fetch_stars
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download files
+        uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+          path: CV/github_stars
+      - name: Check if the number of stars is changed
+        id: check
+        run: |
+          if [ -n "$(git status CV/github_stars/*.tex --porcelain)" ]; then
+            echo "There are some changes in CV/github_stars/*.tex files"
+            git config user.name github-actions[bot]
+            git config user.email github-actions[bot]@users.noreply.github.com
+            git add CV/github_stars/*.tex
+            git commit -m "Update GitHub stars"
+            git push
+            echo "stars_updated=true" >> $GITHUB_OUTPUT
+          else
+            echo "There are no changes in CV/github_stars/*.tex files"
+            echo "stars_updated=false" >> $GITHUB_OUTPUT
+          fi
+    outputs:
+      stars_updated: ${{ steps.check.outputs.stars_updated }}
+
+  build:
+    needs: check_stars
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && needs.check_stars.outputs.stars_updated == 'true'
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
