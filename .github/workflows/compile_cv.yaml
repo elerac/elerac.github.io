@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - CV/*.tex
-      - .github/workflows/compile_cv.yml
+      - .github/workflows/compile_cv.yaml
 
 jobs:
   build:
