@@ -68,5 +68,9 @@ jobs:
   build_cv:
     needs: push_stars
     if: ${{ needs.push_stars.outputs.push_success == 'true' }}
-    uses: ./.github/workflows/build_cv.yaml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/build_cv.yaml
+        with:
+          secrets: inherit
