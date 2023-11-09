@@ -52,14 +52,14 @@ jobs:
       - name: Commit and push
         id: commit_and_push
         run: |
-          git config --local user.name github-actions[bot]
-          git config --local user.email github-actions[bot]@users.noreply.github.com
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
           if git commit -a -m "Update GitHub stars"; then
             git push
-            echo "::set-output name=push_success::true"
+            echo "push_success=true" >> $GITHUB_OUTPUT
           else
             echo "No changes"
-            echo "::set-output name=push_success::false"
+            echo "push_success=false" >> $GITHUB_OUTPUT
           fi
 
     outputs:
