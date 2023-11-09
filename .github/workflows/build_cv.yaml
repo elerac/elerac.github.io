@@ -4,7 +4,8 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - CV/**/*.tex
+      - CV/*.tex
+      - CV/github_stars/*.tex
 
 jobs:
   build:
