@@ -46,8 +46,8 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git add CV/github_stars
-          if git commit -m "Update GitHub stars" -a; then
+          git add .
+          if git commit -m "Update GitHub stars"; then
             git push
           else
             echo "No changes to commit"
