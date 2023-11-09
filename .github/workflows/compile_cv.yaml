@@ -1,0 +1,25 @@
+name: Compile CV and upload PDF
+
+on:
+  push:
+    paths:
+      - CV/*.tex
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up TeX Live
+        uses: dante-ev/setup-texlive@v2
+        with:
+          scheme: basic
+          tex-packages: latexmk
+      - name: Compile LaTeX document
+        run: |
+          latexmk -pdf -interaction=nonstopmode CV/cv_ryota_maeda.tex
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: cv_ryota_maeda.pdf
+          path: CV/cv_ryota_maeda.pdf
