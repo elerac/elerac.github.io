@@ -1,0 +1,32 @@
+name: Update GitHub stars
+
+# To get the number of stars for a repo, run:
+# curl -s https://api.github.com/repos/$USER/$REPO | jq .stargazers_count
+# Borrowed from: https://gist.github.com/simeji/2d68d6fe2212934ad18068f5eedb34bb?permalink_comment_id=3443987#gistcomment-3443987
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 0" # Run every Sunday at midnight
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        repo: ["polanalyser", "structuredlight", "EasyPySpin"]
+        user: ["elerac"]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check GitHub Stars and store them into files (named as CV/github_stars/$REPO.tex)
+        run: |
+          mkdir -p CV/github_stars
+          curl -s https://api.github.com/repos/${{matrix.user}}/${{matrix.repo}} | jq .stargazers_count > CV/github_stars/${{ matrix.repo }}.tex
+
+      - name: Push generated files to GitHub
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email github-actions[bot]@users.noreply.github.com
+          git diff --quiet || git commit -am "Update GitHub stars"
+          git push
