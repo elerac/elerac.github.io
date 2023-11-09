@@ -45,9 +45,10 @@ jobs:
           path: CV/github_stars
       - name: Push generated files to GitHub (if changed)
         run: |
+          echo git status
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git add CV/github_stars/*.tex 
+          git add .
           if git commit -m "Update GitHub stars"; then
             git push
           else
