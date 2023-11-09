@@ -1,13 +1,11 @@
 name: Build CV and upload PDF
 
-on: [push]
-
-# on:
-#   workflow_dispatch:
-#   push:
-#     paths:
-#       - CV/*.tex
-#       - CV/github_stars/*.tex
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - CV/*.tex
+      - CV/github_stars/*.tex
 
 jobs:
   build:
