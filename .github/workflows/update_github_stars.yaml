@@ -23,6 +23,9 @@ jobs:
         run: |
           mkdir -p CV/github_stars
           curl -s https://api.github.com/repos/${{matrix.user}}/${{matrix.repo}} | jq .stargazers_count > CV/github_stars/${{ matrix.repo }}.tex
+      - name: Show the number of stars
+        run: |
+          cat CV/github_stars/${{matrix.repo}}.tex
       - name: Upload files
         uses: actions/upload-artifact@v3
         with:
