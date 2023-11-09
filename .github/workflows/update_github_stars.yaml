@@ -68,4 +68,4 @@ jobs:
   build_cv:
     needs: push_stars
     if: ${{ needs.push_stars.outputs.push_success == 'true' }}
-    uses: ./.github/workflows/build_cv.yaml@main
+    uses: ./.github/workflows/build_cv.yaml
