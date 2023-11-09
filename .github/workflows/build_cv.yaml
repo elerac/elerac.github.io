@@ -15,7 +15,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: CV/main.tex
+          root_file: main.tex
           working_directory: CV
       - name: Rename PDF file
         run: |
