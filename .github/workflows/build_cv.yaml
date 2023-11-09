@@ -7,12 +7,6 @@ on:
       - CV/*.tex
       - CV/github_stars/*.tex
 
-inputs:
-  token:
-    description: "GitHub token"
-    default: ${{ github.token }}
-    required: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
