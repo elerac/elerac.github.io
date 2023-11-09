@@ -20,7 +20,7 @@ jobs:
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
-          name: CV
+          name: my-artifact
           path: CV/cv_ryota_maeda.pdf
 
   push:
@@ -31,10 +31,10 @@ jobs:
       - name: Set up
         uses: actions/checkout@v3
 
-      - name: Download PDF file
+      - name: Download PDF file (CV/cv_ryota_maeda.pdf)
         uses: actions/download-artifact@v3
         with:
-          name: CV
+          name: my-artifact
           path: CV
 
       - name: Push PDF to GitHub
