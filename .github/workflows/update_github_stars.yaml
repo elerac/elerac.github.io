@@ -10,7 +10,7 @@ on:
     - cron: "0 0 * * 0" # Run every Sunday at midnight
 
 jobs:
-  build:
+  check_stars:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -23,7 +23,23 @@ jobs:
         run: |
           mkdir -p CV/github_stars
           curl -s https://api.github.com/repos/${{matrix.user}}/${{matrix.repo}} | jq .stargazers_count > CV/github_stars/${{ matrix.repo }}.tex
+      - name: Upload files
+        uses: actions/upload-artifact@v3
+        with:
+          name: github_stars
+          path: CV/github_stars
 
+  push_stars:
+    needs: check_stars
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Download files
+        uses: actions/download-artifact@v3
+        with:
+          name: github_stars
+          path: CV/github_stars
       - name: Push generated files to GitHub
         run: |
           git config user.name github-actions[bot]
