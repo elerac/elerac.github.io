@@ -47,9 +47,8 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           git add CV/github_stars
-          if git diff-index --quiet HEAD --; then
-            echo "No changes to commit"
-          else
-            git commit -m "Update GitHub stars"
+          if git commit -m "Update GitHub stars" -a; then
             git push
+          else
+            echo "No changes to commit"
           fi
