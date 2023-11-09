@@ -25,7 +25,7 @@ jobs:
       - name: Upload files
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: artifacts_github_stars
           path: CV/github_stars/${{ matrix.repo }}.tex
 
   check_stars:
@@ -36,7 +36,7 @@ jobs:
       - name: Download files
         uses: actions/download-artifact@v3
         with:
-          name: my-artifact
+          name: artifacts_github_stars
           path: CV/github_stars
       - name: Check if the number of stars is changed
         id: check
@@ -74,7 +74,7 @@ jobs:
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
-          name: my-artifact
+          name: artifacts_cv
           path: CV/cv_ryota_maeda.pdf
 
   push:
@@ -85,10 +85,16 @@ jobs:
       - name: Set up
         uses: actions/checkout@v3
 
+      - name: Download github stars
+        uses: actions/download-artifact@v3
+        with:
+          name: artifacts_github_stars
+          path: CV/github_stars
+
       - name: Download PDF file
         uses: actions/download-artifact@v3
         with:
-          name: my-artifact
+          name: artifacts_cv
           path: CV
 
       - name: Push PDF to GitHub
