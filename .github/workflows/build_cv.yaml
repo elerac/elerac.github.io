@@ -7,8 +7,11 @@ on:
       - CV/*.tex
       - CV/github_stars/*.tex
 
-permissions:
-  contents: write
+inputs:
+  token:
+    description: "GitHub token"
+    default: ${{ github.token }}
+    required: true
 
 jobs:
   build:
