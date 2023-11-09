@@ -29,7 +29,7 @@ jobs:
       - name: Upload files
         uses: actions/upload-artifact@v3
         with:
-          name: github_stars
+          name: github_stars ${{ matrix.user }}/${{ matrix.repo }}
           path: CV/github_stars
 
   push_stars:
