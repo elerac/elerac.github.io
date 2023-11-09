@@ -43,11 +43,6 @@ jobs:
         run: |
           if [ -n "$(git status CV/github_stars/*.tex --porcelain)" ]; then
             echo "There are some changes in CV/github_stars/*.tex files"
-            git config user.name github-actions[bot]
-            git config user.email github-actions[bot]@users.noreply.github.com
-            git add CV/github_stars/*.tex
-            git commit -m "Update GitHub stars"
-            git push
             echo "stars_updated=true" >> $GITHUB_OUTPUT
           else
             echo "There are no changes in CV/github_stars/*.tex files"
@@ -101,11 +96,11 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          if [ -f "CV/cv_ryota_maeda.pdf" ]; then
-            git add CV/cv_ryota_maeda.pdf
-            git commit -m "Update CV"
-            git pull --rebase
+          git add CV/github_stars/*.tex 
+          git add CV/cv_ryota_maeda.pdf
+          if git commit -m "Update CV"; then
             git push
           else
-            echo "CV/cv_ryota_maeda.pdf not found"
+            echo "No changes in GitHub stars"
+            git status
           fi
