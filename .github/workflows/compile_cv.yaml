@@ -10,16 +10,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up TeX Live
-        uses: dante-ev/setup-texlive@v2
-        with:
-          scheme: basic
-          tex-packages: latexmk
+      - name: Set up Git repository
+        uses: actions/checkout@v3
       - name: Compile LaTeX document
-        run: |
-          latexmk -pdf -interaction=nonstopmode CV/cv_ryota_maeda.tex
-      - name: Upload PDF artifact
-        uses: actions/upload-artifact@v2
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: CV/cv_ryota_maeda.tex
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
         with:
           name: cv_ryota_maeda.pdf
           path: CV/cv_ryota_maeda.pdf
