@@ -45,14 +45,13 @@ jobs:
         with:
           name: github_stars
           path: CV/github_stars
-      - name: Push generated files to GitHub (if changed)
+      - name: Commit files
         run: |
-          git status
-          git config user.name github-actions[bot]
-          git config user.email github-actions[bot]@users.noreply.github.com
-          git add .
-          if git commit -m "Update GitHub stars"; then
-            git push
-          else
-            echo "No changes to commit"
-          fi
+          git config --local user.name github-actions[bot]
+          git config --local user.email github-actions[bot]@users.noreply.github.com
+          git commit -a -m "Update GitHub stars"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
