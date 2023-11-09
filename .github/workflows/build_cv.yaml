@@ -49,7 +49,6 @@ jobs:
           if [ -f "CV/cv_ryota_maeda.pdf" ]; then
             git add CV/cv_ryota_maeda.pdf
             git commit -m "Update CV"
-            git pull --ff-only
             git push
           else
             echo "CV/cv_ryota_maeda.pdf not found"
