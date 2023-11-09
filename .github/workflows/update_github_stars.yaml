@@ -40,9 +40,10 @@ jobs:
         with:
           name: github_stars
           path: CV/github_stars
-      - name: Push generated files to GitHub
+      - name: Push generated files to GitHub (if changed)
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git diff --quiet || git commit -am "Update GitHub stars"
+          git add CV/github_stars
+          git commit -m "Update GitHub stars"
           git push
