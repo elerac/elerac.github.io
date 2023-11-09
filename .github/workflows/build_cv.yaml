@@ -1,11 +1,11 @@
-name: Compile CV and upload PDF
+name: Build CV and upload PDF
 
 on:
   workflow_dispatch:
   push:
     paths:
       - CV/*.tex
-      - .github/workflows/compile_cv.yaml
+      - .github/workflows/build_cv.yaml
 
 jobs:
   build:
@@ -16,7 +16,10 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: CV/cv_ryota_maeda.tex
+          root_file: CV/main.tex
+      - name: Rename PDF file
+        run: |
+          mv main.pdf cv_ryota_maeda.pdf
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
