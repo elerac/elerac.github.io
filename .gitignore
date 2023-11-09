@@ -1,3 +1,7 @@
-CV/*
-
-!CV/*.tex
+CV/main.aux
+CV/main.fdb_latexmk
+CV/main.fls
+CV/main.synctex.gz
+CV/main.log
+CV/main.out
+CV/main.pdf
