@@ -59,7 +59,7 @@ jobs:
   build:
     needs: check_stars
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && needs.check_stars.outputs.stars_updated == 'true'
+    if: github.event_name == 'push' || needs.check_stars.outputs.stars_updated == 'true'
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
@@ -95,7 +95,6 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
-          git remote add gh-token "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
           if [ -f "CV/cv_ryota_maeda.pdf" ]; then
             git add CV/cv_ryota_maeda.pdf
             git commit -m "Update CV"
