@@ -47,6 +47,7 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
           if [ -f "CV/cv_ryota_maeda.pdf" ]; then
+            git pull origin main
             git add CV/cv_ryota_maeda.pdf
             git commit -m "Update CV"
             git push
