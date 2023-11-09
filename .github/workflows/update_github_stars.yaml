@@ -50,11 +50,22 @@ jobs:
             cat $file
           done
       - name: Commit and push
+        id: commit_and_push
         run: |
           git config --local user.name github-actions[bot]
           git config --local user.email github-actions[bot]@users.noreply.github.com
           if git commit -a -m "Update GitHub stars"; then
             git push
+            echo "::set-output name=push_success::true"
           else
             echo "No changes"
+            echo "::set-output name=push_success::false"
           fi
+
+    outputs:
+      push_success: ${{ steps.commit_and_push.outputs.push_success }}
+
+  build_cv:
+    needs: push_stars
+    if: ${{ needs.push_stars.outputs.push_success == 'true' }}
+    uses: ./.github/workflows/build_cv.yaml
