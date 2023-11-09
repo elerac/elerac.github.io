@@ -16,14 +16,15 @@ jobs:
         uses: xu-cheng/latex-action@v3
         with:
           root_file: CV/main.tex
+          working_directory: CV
       - name: Rename PDF file
         run: |
-          mv main.pdf cv_ryota_maeda.pdf
+          mv CV/main.pdf CV/cv_ryota_maeda.pdf
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: cv_ryota_maeda.pdf
+          path: CV/cv_ryota_maeda.pdf
 
   push:
     needs: build
