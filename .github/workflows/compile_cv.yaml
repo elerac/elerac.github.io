@@ -19,6 +19,9 @@ jobs:
           root_file: CV/cv_ryota_maeda.tex
       - name: Upload PDF file
         uses: actions/upload-artifact@v3
+        with:
+          name: CV
+          path: CV/cv_ryota_maeda.pdf
 
   push:
     needs: build
