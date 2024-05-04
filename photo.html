@@ -5,10 +5,38 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Ryota MAEDA|Photo</title>
 	<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+	<style>
+		/* Custom styles for the photo gallery */
+		.gallery-item {
+		padding: 15px; /* Add padding to create space */
+		}
+		.gallery-item img {
+		width: 100%;
+		height: auto;
+		transition: transform 0.3s ease;
+		}
+		.gallery-item img:hover {
+		filter: brightness(85%);
+		}
+	</style>
+
+<style>
+    body {
+        background-color: white;
+        transition: background-color 0.5s ease;
+    }
+
+    body.dark-mode {
+        background-color: #1a1a1a;
+		color: white;
+    }
+</style>
 </head>
 
+
 <body>
-	<nav class="navbar navbar-expand-sm navbar-light bg-light" id="navbar">
+	<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 		<div class="container" id="nav-container">
 			<a href="index.html" class="navbar-brand">Home</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navmenu1"
@@ -26,74 +54,80 @@
 		</div>
 	</nav>
 
-
 	<div class="container">
 		<h2 id="photo">Photo</h2>
 
-		<div id="photostream" class="carousel slide" data-ride="carousel">
-			<ol class="carousel-indicators">
-				<li data-target="#photostream" data-slide-to="0" class="active"></li>
-				<li data-target="#photostream" data-slide-to="1"></li>
-				<li data-target="#photostream" data-slide-to="2"></li>
-				<li data-target="#photostream" data-slide-to="3"></li>
-				<li data-target="#photostream" data-slide-to="4"></li>
-			</ol>
-
-			<div class="carousel-inner">
-				<div class="carousel-item active">
-					<a data-flickr-embed="true" href="https://www.flickr.com/photos/135515139@N08/48534017136/"
-						title="Startrails Himeji Castle"><img
-							src="https://live.staticflickr.com/65535/48534017136_842b1b9b3b_k.jpg" width="2048"
-							height="1365" alt="Startrails Himeji Castle" class="img-fluid"></a>
-					<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-				</div>
-
-				<div class="carousel-item">
-					<a data-flickr-embed="true" href="https://www.flickr.com/photos/135515139@N08/48534172607/"
-						title="The Milky Way appears"><img
-							src="https://live.staticflickr.com/65535/48534172607_e8ad167f8a_k.jpg" width="2048"
-							height="1365" alt="The Milky Way appears" class="img-fluid"></a>
-					<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-				</div>
-
-				<div class="carousel-item">
-					<a data-flickr-embed="true" href="https://www.flickr.com/photos/135515139@N08/48534171642/"
-						title="Astrophotograohy Tonomine"><img
-							src="https://live.staticflickr.com/65535/48534171642_8062079ca2_k.jpg" width="2048"
-							height="1365" alt="Astrophotograohy Tonomine" class="img-fluid"></a>
-					<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-				</div>
-
-				<div class="carousel-item">
-					<a data-flickr-embed="true" href="https://www.flickr.com/photos/135515139@N08/48534019276/"
-						title="Perseids meteor shower, Aug.2016"><img
-							src="https://live.staticflickr.com/65535/48534019276_6d70d58001_k.jpg" width="2048"
-							height="1365" alt="Perseids meteor shower, Aug.2016" class="img-fluid"></a>
-					<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-				</div>
-
-				<div class="carousel-item">
-					<a data-flickr-embed="true"
-						href="https://www.flickr.com/photos/135515139@N08/48534020251/in/datetaken-public/"
-						title="Lunar eclipse, Oct.2014"><img
-							src="https://live.staticflickr.com/65535/48534020251_aca3b140d1_k.jpg" width="2048"
-							height="1365" alt="Lunar eclipse, Oct.2014" class="img-fluid"></a>
-					<script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
-				</div>
+		<h3>Astrophotography</h3>
+		<div class="container gallery-container">
+			<div class="row" id="gallery-row-astro">
 			</div>
-
-			<a class="carousel-control-prev" href="#photostream" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				<span class="sr-only">Previous</span>
-			  </a>
-			  <a class="carousel-control-next" href="#photostream" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
-				<span class="sr-only">Next</span>
-			  </a>
 		</div>
 
+		<h3>Himeji Castle</h3>
+		<div class="container gallery-container">
+			<div class="row" id="gallery-row-himeji">
+			</div>
+		</div>
+			 
+		<script>
+		// JavaScript for dynamic photo gallery
+		function createPhotoGallery(images, galleryId) {
+			const galleryRow = document.getElementById(galleryId);
+			
+			images.forEach(image => {
+				const galleryItem = document.createElement('div');
+				galleryItem.classList.add('col-md-6', 'gallery-item');
+			
+				const link = document.createElement('a');
+				link.setAttribute('data-flickr-embed', 'true');
+				link.href = image.flickrLink;
+				link.title = image.flickrImgAlt;
+			
+				const img = document.createElement('img');
+				img.src = image.flickrImgSrc;
+				img.alt = image.flickrImgAlt;
+			
+				link.appendChild(img);
+				galleryItem.appendChild(link);
+				galleryRow.appendChild(galleryItem);
+			
+				const script = document.createElement('script');
+				script.async = true;
+				script.src = '//embedr.flickr.com/assets/client-code.js';
+				script.charset = 'utf-8';
+				galleryItem.appendChild(script);
+			});
+		}
+
+		const images_atro = [
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534017136/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534017136_842b1b9b3b_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534172607/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534172607_e8ad167f8a_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534171642/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534171642_8062079ca2_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534019276/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534019276_6d70d58001_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534016926/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534016926_0fca316ee6_k.jpg' }, 
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534020251/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534020251_aca3b140d1_k.jpg' },
+		];
+
+		const images_himeji = [
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534015976/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534015976_fd11de9b18_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534019806/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534019806_abda63021f_k.jpg' },
+		];
+
+		createPhotoGallery(images_atro, 'gallery-row-astro');
+		createPhotoGallery(images_himeji, 'gallery-row-himeji');
+		</script>
+
+		<script>
+			// Dark mode
+			function changeToDarkMode() {
+				document.body.classList.add('dark-mode');
+			}
+			setTimeout(changeToDarkMode, 1);
+		</script>
+		  
 		<br>
-		If you want to see more photos, please check out my <a href="https://www.flickr.com/photos/135515139@N08/">Flickr photostream</a>.
+
+		Please visit my <a href="https://www.flickr.com/photos/135515139@N08/">Flickr photostream</a> for more photos.
 	</div>
 
 	<br>
