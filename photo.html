@@ -57,16 +57,22 @@
 	<div class="container">
 		<h2 id="photo">Photo</h2>
 
+		I am an amateur photographer and enjoy pursuing it as a hobby. My fascination with photography began when I joined the science club's astronomy team in high school. Since then, I have been capturing images of astrophotography, landscapes, and other subjects.
+		<br>
+		Please visit my <a href="https://www.flickr.com/photos/135515139@N08/">Flickr photostream</a> for more photos.
+		<br>
+		<br>
+
 		<h3>Astrophotography</h3>
 		<div class="container gallery-container">
 			<div class="row" id="gallery-row-astro">
 			</div>
 		</div>
 
-		<h3>Himeji Castle</h3>
+		<h3>Landscape</h3>
 		<div class="container gallery-container">
-			<div class="row" id="gallery-row-himeji">
-			</div>
+			<div class="row" id="gallery-row-land">
+			</div>		
 		</div>
 			 
 		<script>
@@ -108,13 +114,15 @@
 			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534020251/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534020251_aca3b140d1_k.jpg' },
 		];
 
-		const images_himeji = [
-			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534015976/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534015976_fd11de9b18_k.jpg' },
-			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534019806/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534019806_abda63021f_k.jpg' },
+		const images_land = [
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534016631/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534016631_e0078e15d2_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534171367/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534171367_510e925f79_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534171227/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534171227_fc0cd9c70c_k.jpg' },
+			{ flickrEmbed: true, flickrLink: 'https://www.flickr.com/photos/135515139@N08/48534016271/in/datetaken-public/', flickrImgSrc: 'https://live.staticflickr.com/65535/48534016271_a6328fc97f_k.jpg' },
 		];
 
 		createPhotoGallery(images_atro, 'gallery-row-astro');
-		createPhotoGallery(images_himeji, 'gallery-row-himeji');
+		createPhotoGallery(images_land, 'gallery-row-land');
 		</script>
 
 		<script>
@@ -124,10 +132,6 @@
 			}
 			setTimeout(changeToDarkMode, 1);
 		</script>
-		  
-		<br>
-
-		Please visit my <a href="https://www.flickr.com/photos/135515139@N08/">Flickr photostream</a> for more photos.
 	</div>
 
 	<br>
