@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="We present Strand Integration, a refinement method for hair geometry by incorporating the gradient of strands.">
+
+  <meta property="og:title" content="[IEEE TCI] Polarimetric Light Transport Analysis for Specular Inter-reflection" />
+  <meta property="og:description" content="We present Strand Integration, a refinement method for hair geometry by incorporating the gradient of strands."/>
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="teaser_wide.svg"/>
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="600" />
+
+  <title>Polarimetric Light Transport Analysis for Specular Inter-reflection</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Add your custom styles here */
+  </style>
+</head>
+
+<body>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <section id="project-details">
+    <div class="text-center mb-4">
+      <h1>Polarimetric Light Transport Analysis <br>for Specular Inter-reflection</h1>
+      <p style="font-size:1.2em;margin-top:0.75em;margin-bottom:0.1em;"><a href="https://elerac.github.io/">Ryota Maeda</a> and <a href="https://vislab.jp/hiura/index-e.html">Shinsaku Hiura</a></p>
+      <p style="font-size:1.0em;">University of Hyogo</p>
+      <p style="font-size:1.0em;">IEEE Transactions on Computational Imaging</p>
+
+      <a href="https://ieeexplore.ieee.org/document/10538019" class="btn btn-light"> <i class="fa fa-globe"></i> IEEE Xplore</a>
+      <a href="https://arxiv.org/abs/2312.04140" class="btn btn-light"> <i class="fa fa-file-pdf-o"></i> ArXiv</a>
+      <a href="https://github.com/elerac/PolarimetricInterreflection" class="btn btn-light" > <i class="fa fa-github"></i> Code</a>
+    </div>
+    <hr>
+    <div class="text-center">
+        <img src="teaser_wide.svg" alt="Teaser Image" class="img-fluid">
+    </div>
+    <div class="mt-4">
+      <p>In this paper, we propose a novel decomposition method for handling specular inter-reflection of metal objects by using a unique polarimetric feature: the rotation direction of linear polarization. This rotation direction serves as a discriminative factor between direct and inter-reflection on specular surfaces. To decompose the reflectance components, we actively rotate the linear polarization of incident light and analyze the rotation direction of the reflected light. We evaluate our method using both synthetic and real data, demonstrating its effectiveness in decomposing specular inter-reflections of metal objects. Furthermore, we demonstrate that our method can be combined with other decomposition methods for a detailed analysis of light transport. As a practical application, we show its effectiveness in improving the accuracy of 3D measurement against strong specular inter-reflection.</p>
+      <!-- Bullet -->
+      <ul>
+        <li>We propose a polarization-based light transport decomposition method for specular interreflection with a unique polarimetric feature: the rotation direction of linear polarization.</li>
+        <li>We show the combination with existing methods in a complementary manner and achieve a more in-depth analysis of light transport.</li>
+        <li>We show a practical application of our method: 3D measurement with a projector-camera system for metal objects. With our method, we can measure the s3D shape in the presence of specular inter-reflection.</li>
+      </ul>
+    </div>
+    <!-- <hr> -->
+    <!-- <div class="mt-4">
+      <h2>Polarization in Specular Inter-reflection</h2>
+      <img src="polarization_states.svg" alt="Polarization States" class="img-fluid">
+      Polarization states of reflected light relative to incident light's polarization plane rotation.
+    </div> -->
+    <hr>
+    <div class="mt-4">
+        <h2>Experimental Results</h2>
+        <h3>Decomposition of Specular Inter-reflection</h3>
+        <img src="fig7.jpg" class="img-fluid">
+        <b>Decomposition results for various scenes.</b> Each column shows the images of the scene layout, regular (sum of all components), unpolarized, forward rotation, and reverse rotation components. Our method can extract specular inter-reflection of metal objects, as shown in the reverse rotation component for various scenes.
+        <br><br>
+
+        <h3>Combining with Nayar's decomposition method.</h3>
+        <img src="fig8.jpg" class="img-fluid">
+        <b>Comparison with Nayar's high-frequency illumination method for specular inter-reflection.</b> This scene contains two types of specular inter-reflection categorized as global components but have distinct spatial frequency responses. Nayar's method failed to separate high-frequency inter-reflection from the hexagonal mirror. In contrast, our method extracts both specular inter-reflection regardless of its frequency response.
+        <br><br>
+
+        <h3>Combining with Nayar's decomposition method.</h3>
+        <img src="fig9.jpg" class="img-fluid">
+        <b>Combining with Nayar's decomposition method.</b> Row: Direct / Global components with Nayar's method. Column: Unpolarized / Forward / Reverse components (ours). As the two methods differ in targeting optical phenomena, we can combine them in a complementary manner and achieve a more in-depth decomposition. In particular, this combination extracts only the high-frequency or low-frequency specular inter-reflections that have never been achieved by previous methods.
+        <br><br>
+
+        <h3>Improving 3D measurement accuracy.</h3>
+        <img src="fig10.jpg" class="img-fluid">
+        <b>Application for 3D measurement under strong specular inter-reflection.</b> We measure the V-groove metal object using Gray code structured light. Left: An example of an intensity image projected under a Gray code pattern. Middle: Reconstructed depth map. The gray color areas in the image indicate that they are either out of range of depth or background. Right: Reconstructed 3D mesh from a different viewpoint. Without our method (all), due to the specular inter-reflection, the proportion of correct points is only 54.6%. With our method, by using the forward rotation components, the proportion of correct points increases to 92.8%.
+        <br><br>
+
+    </div>
+    <hr>
+    <div class="mt-4">
+      <h2>Citation</h2>
+        <p>If you find our work useful in your research, please consider citing:</p>
+        <pre>
+@article{maeda2024polarimetric,
+    title={Polarimetric Light Transport Analysis for Specular Inter-reflection},
+    author={Maeda, Ryota and Hiura, Shinsaku},
+    journal={IEEE Transactions on Computational Imaging},
+    year={2024}
+}
+        </pre>
+    </div>
+
+  </section>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstra
