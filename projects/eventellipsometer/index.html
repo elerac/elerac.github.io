@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description" content="We present Event Ellipsometer, a Mueller-matrix imaging method capable of capturing dynamic and HDR scenes.">
+  <meta property="og:title" content="Event Ellipsometer: Event-based Mueller-Matrix Video Imaging" />
+  <meta property="og:description" content="We present Event Ellipsometer, a Mueller-matrix imaging method capable of capturing dynamic and HDR scenes." />
+  <meta property="og:url" content="" />
+  <meta property="og:image" content="eventellipsometer_teaser_3x2.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="750" />
+
+  <title>Event Ellipsometer: Event-based Mueller-Matrix Video Imaging</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Custom CSS -->
+  <style>
+    .custom-container {
+      max-width: 800px; /* Set your desired width */
+      margin: 0 auto; /* Center the container */
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Main Content -->
+<div class="container custom-container">
+  <section id="project-details">
+    <div class="text-center mb-4">
+      <h1>Event Ellipsometer: Event-based Mueller-Matrix Video Imaging</h1>
+      <p style="font-size:1.2em;margin-top:0.75em;margin-bottom:0.1em;">
+        <a href="https://elerac.github.io/">Ryota Maeda</a><sup>1, 2</sup>, 
+        <a href="https://sites.google.com/view/yunseongmoon">Yunseong Moon</a><sup>1</sup>, 
+        <a href="https://sites.google.com/view/shbaek/">Seung-Hwan Baek</a><sup>1</sup>
+      </p>
+      <p style="font-size:1.0em;margin-top:0.5em;margin-bottom:0.1em;">
+        <sup>1</sup>POSTECH, <sup>2</sup>University of Hyogo
+      </p>
+      <p style="font-size:1.0em;"></p>
+
+      <a href="https://arxiv.org/abs/2411.17313" class="btn btn-light"> <i class="fa fa-file-pdf-o"></i> ArXiv</a>
+      <a href="https://github.com/elerac/EventEllipsometer" class="btn btn-light" > <i class="fa fa-github"></i> Code (coming soon)</a>
+    </div>
+    <hr>
+    <div class="text-center">
+        <img src="teaser_wide.jpg" alt="Teaser Image" class="img-fluid">
+    </div>
+    <div class="mt-4">
+      <p>Light-matter interactions modify both the intensity and polarization state of light. Changes in polarization, represented by a Mueller matrix, encode detailed scene information. Existing optical ellipsometers capture Mueller-matrix images; however, they are often limited to capturing static scenes due to long acquisition times. Here, we introduce Event Ellipsometer, a method for acquiring a Mueller-matrix video for dynamic scenes. Our imaging system employs fast-rotating quarter-wave plates (QWPs) in front of a light source and an event camera that asynchronously captures intensity changes induced by the rotating QWPs. We develop an ellipsometric-event image formation model, a calibration method, and an ellipsometric-event reconstruction method. We experimentally demonstrate that Event Ellipsometer enables Mueller-matrix video imaging at 30fps, extending ellipsometry to dynamic scenes.</p>
+    </div>
+    <hr>
+    <div class="mt-4">
+        <h2>Event Ellipsometer</h2>
+        In this paper, we present <b>Event Ellipsometer</b>, a Mueller-matrix imaging method capable of capturing dynamic and HDR scenes.
+        
+        <h3>Imaging System</h3>
+        Event Ellipsometer consists of fast-rotating quarter-wave plates (QWPs) and linear polarizers (LPs) in front of both the event camera and an LED light source. 
+        The rotating QWPs modulate the polarization state of light emitted and received by the imaging system, resulting in intensity changes captured as events.
+
+        <img src="hardware_protottype.jpg" class="img-fluid">
+        <br><br>
+        
+        We used two brushed direct current (DC) motors rotating the QWP films, resulting in fast rotation at 4500 rpm which is cable of capturing 30fps Mueller-matrix video.
+        <video width="100%" autoplay controls muted loop>
+          <source src="imaging_system_rotate.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <br><br>
+        <h2>Results</h2>
+        <h3>Photoelasticity Analysis</h3>
+        Photoelasticity is an optical property whereby dielectric materials exhibit birefringence under deformation.
+        Our system enables observing photoelasticity at video rates, revealing stress distribution in transparent materials.
+        <video width="100%" autoplay controls muted loop>
+          <source src="result_photoelasticity.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+        <br><br>
+
+        <h3>Dynamic Human Capture</h3>
+        We demonstrate the Mueller-matrix reconstruction of dynamic facial expressions and hair movements, revealing intricate polarization properties.
+
+        <h4>Face</h4>
+        <video width="100%" autoplay controls muted loop>
+          <source src="result_human_face.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <h4>Hair</h4>
+        <video width="100%" autoplay controls muted loop>
+          <source src="result_human_hair.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+        <br><br>
+        
+        <h3>HDR Mueller-matrix Imaging</h3>
+        Our event-based ellipsometer enables Mueller-matrix imaging of HDR scenes. 
+        While conventional ellipsometers require multiple exposures to prevent overexposure, our method captures the Mueller matrix in HDR scenes without the need for additional measurement.
+        <img src="result_hdr.jpg" class="img-fluid">
+
+        <br><br>
+
+        <h3>Transparent Tape Detection</h3>
+        Detecting transparent objects is challenging for conventional cameras. 
+        Sticky tape, a common transparent material used for sealing cardboard, exhibits birefringent properties due to the molecular structure of its stretched plastic. 
+         The reconstructed Mueller matrix shows the birefringent property, and we can clearly recognize the tape region. 
+        <img src="result_tape.jpg" class="img-fluid">
+
+        <br><br>
+
+    </div>
+    <hr>
+    <div class="mt-4">
+      <h2>Citation</h2>
+        <p>If you find our work useful in your research, please consider citing:</p>
+        <pre>
+@article{maeda2024event,
+    title={Event Ellipsometer: Event-based Mueller-Matrix Video Imaging},
+    author={Maeda, Ryota and Moon, Yunseong and Baek, Seung-Hwan},
+    journal={arXiv preprint arXiv:2411.17313},
+    year={2024}
+}
+        </pre>
+    </div>
+
+  </section>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstra
