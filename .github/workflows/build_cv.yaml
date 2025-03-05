@@ -27,7 +27,7 @@ jobs:
       - name: Upload files
         uses: actions/upload-artifact@v4
         with:
-          name: artifacts_github_stars
+          name: artifacts_github_stars_${{ github.run_id }}
           path: CV/github_stars/${{ matrix.repo }}.tex
 
   check_stars:
@@ -38,7 +38,7 @@ jobs:
       - name: Download files
         uses: actions/download-artifact@v4
         with:
-          name: artifacts_github_stars
+          name: artifacts_github_stars_${{ github.run_id }}
           path: CV/github_stars
       - name: Check if the number of stars is changed
         id: check
@@ -63,7 +63,7 @@ jobs:
       - name: Download updated GitHub stars
         uses: actions/download-artifact@v4
         with:
-          name: artifacts_github_stars
+          name: artifacts_github_stars_${{ github.run_id }}
           path: CV/github_stars
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
@@ -90,7 +90,7 @@ jobs:
       - name: Download updated GitHub stars
         uses: actions/download-artifact@v4
         with:
-          name: artifacts_github_stars
+          name: artifacts_github_stars_${{ github.run_id }}
           path: CV/github_stars
 
       - name: Download PDF file
