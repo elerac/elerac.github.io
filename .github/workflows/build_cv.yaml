@@ -44,7 +44,7 @@ jobs:
         run: |
           git add CV/github_stars/*.tex
           git diff --cached --exit-code CV/github_stars/*.tex
-          if [ $? -ne 0 ]; then
+          if true; then
             echo "There are some changes in CV/github_stars/*.tex files"
             echo "stars_updated=true" >> $GITHUB_OUTPUT
           else
