@@ -39,6 +39,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: CV/github_stars
+      - name: Show the number of stars 
+        run: |
+          for file in CV/github_stars/*.tex; do
+            echo "File: $file"
+            cat $file
+          done
       - name: Check if the number of stars is changed
         id: check
         run: |
