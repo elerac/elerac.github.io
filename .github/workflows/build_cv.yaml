@@ -42,6 +42,7 @@ jobs:
       - name: Check if the number of stars is changed
         id: check
         run: |
+          git add CV/github_stars/*.tex
           if [ -n "$(git status CV/github_stars/*.tex --porcelain)" ]; then
             echo "There are some changes in CV/github_stars/*.tex files"
             echo "stars_updated=true" >> $GITHUB_OUTPUT
