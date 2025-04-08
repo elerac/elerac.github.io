@@ -48,6 +48,7 @@ jobs:
           else
             echo "There are no changes in CV/github_stars/*.tex files"
             echo "stars_updated=false" >> $GITHUB_OUTPUT
+          fi
     outputs:
       stars_updated: ${{ steps.check.outputs.stars_updated }}
 
@@ -106,3 +107,4 @@ jobs:
           else
             echo "No changes in GitHub stars"
             git status
+          fi
