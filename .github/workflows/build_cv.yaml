@@ -71,6 +71,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: CV/github_stars
+          pattern: artifacts_github_stars_*
+          merge-multiple: true
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
@@ -97,6 +99,8 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: CV/github_stars
+          pattern: artifacts_github_stars_*
+          merge-multiple: true
 
       - name: Download PDF file
         uses: actions/download-artifact@v4
