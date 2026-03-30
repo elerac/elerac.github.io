@@ -6,3 +6,5 @@ CV/main.log
 CV/main.out
 CV/main.pdf
 CV/**/*.aux
+
+.DS_Store
