@@ -18,13 +18,11 @@
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
 \usepackage{tabularx}
+\usepackage{fontawesome5}
 \usepackage{multicol}
-\usepackage{iftex}
 \setlength{\multicolsep}{-3.0pt}
 \setlength{\columnsep}{-1pt}
-\ifPDFTeX
-  \input{glyphtounicode}
-\fi
+\input{glyphtounicode}
 
 
 %----------FONT OPTIONS----------
@@ -64,9 +62,7 @@
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % Ensure that generate pdf is machine readable/ATS parsable
-\ifPDFTeX
-  \pdfgentounicode=1
-\fi
+\pdfgentounicode=1
 
 %-------------------------
 % Custom commands
@@ -104,7 +100,7 @@
 \newcommand{\resumeSoftwareHeading}[3]{
     \item 
     \small 
-    \textbf{#1} $|$ \raisebox{0.09\height}{\scriptsize $\star$\hspace{0.5ex}}#2 stars\\
+    \textbf{#1} $|$ \raisebox{0.09\height}{\scriptsize \faIcon[regular]{star}\hspace{0.5ex}}#2 stars\\
     #3 
 }
 
@@ -135,9 +131,9 @@
 
 \begin{center}
     {\Huge \scshape Ryota Maeda} \\ \vspace{1pt}
-    \footnotesize \href{mailto:maeda.ryota.elerac@gmail.com}{\underline{maeda.ryota.elerac@gmail.com}} ~
-    \href{https://www.linkedin.com/in/ryota-maeda-elerac/}{\underline{linkedin.com/in/ryota-maeda-elerac}}  ~
-    \href{https://github.com/elerac}{\underline{github.com/elerac}}
+    \small \href{mailto:maeda.ryota.elerac@gmail.com}{\raisebox{-0.2\height}\faEnvelope\  \underline{maeda.ryota.elerac@gmail.com}} ~ 
+    \href{https://www.linkedin.com/in/ryota-maeda-elerac/}{\raisebox{-0.2\height}\faLinkedin\ \underline{linkedin.com/in/ryota-maeda-elerac}}  ~
+    \href{https://github.com/elerac}{\raisebox{-0.2\height}\faGithub\ \underline{github.com/elerac}}
     \vspace{-8pt}
 \end{center}
 
@@ -187,7 +183,7 @@
             {Yonghee Oh*, \textbf{Ryota Maeda}*, Yunseong Moon, Seung-Hwan Baek \textit{(*Equal contribution)}}
             {SIGGRAPH Asia 2026}
         \resumePublicationHeading
-            {\href{https://dl.acm.org/doi/10.1145/3799825.3818744}{Transient Polarimetry}}{Jul. 2026}
+            {Transient Polarimetry}{Jul. 2026}
             {Oscar Pueyo-Ciutad, Guillermo Enguita-Lahoz, Yunseong Moon, \textbf{Ryota Maeda}, Seung-Hwan Baek, Albert Redo-Sanchez, Diego Gutierrez}
             {SIGGRAPH 2026 Poster}
         \resumePublicationHeading
